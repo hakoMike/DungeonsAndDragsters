@@ -61,8 +61,8 @@ class DungeonsAndDragsters extends Sprite
 	private var gear:Int = 1; 
 	private var lastgear:Int = 1;
 	private var speed:Float = 0.0; // leagues per fortnight ... max at about 31k
-	private var distance:Float = 2000; // in cubit
-	private var win_speed = 16500;
+	private var distance:Float = 2500; // in cubit
+	private var win_speed = 8000; //16500;
 
 	//vars for enterframe function
 	var localInt:Int=0;
@@ -621,7 +621,7 @@ class DungeonsAndDragsters extends Sprite
 				move_speed -= 0.3;
 			} else {
 				if (keystates[ACCEL]) {
-					move_speed += gear*accel;
+					move_speed += (5-gear)*accel/3;
 				} else {
 					move_speed -= 0.1;
 				}
@@ -668,6 +668,12 @@ class DungeonsAndDragsters extends Sprite
 				if (lastgear<1) lastgear=1;
 			}
 		} else {
+			if (lastgear>gear) {
+				tach *= .8;
+			}
+			if (lastgear<gear) {
+				tach /= .2;
+			}
 			gear=lastgear;
 			geartext.text=Std.string(gear);
 		}
@@ -675,7 +681,7 @@ class DungeonsAndDragsters extends Sprite
 		if (keystates[ACCEL] && keystates[CLUTCH] && (gamestate!=ENGINE_BLOWN)) {
 			tach = tach + 10;
 		} else if (keystates[ACCEL] && (gamestate!=ENGINE_BLOWN)) {
-			tach = tach + accel* 2*(5-gear);
+			tach = tach + accel* 2*(6-gear);
 			if (dragsterstate==1 ) {
 				//soundchannel[3] = enginesound.play(11517/(tach/330));
 				soundchannel[3] = enginesound.play(5000);
