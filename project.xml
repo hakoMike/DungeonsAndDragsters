@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+	
+	<meta title="DungeonsAndDragsters" package="com.hakosoftware.dungeonsanddragsters" version="1.0.0" company="hako software" />
+	<app main="Main" path="Export" file="DungeonsAndDragsters" />
+	<window hardware="true" width="800" height="480" resizable="false"/>
+	
+	<source path="Source" />
+	<source path="Assets" />
+	
+	<haxelib name="openfl" />
+	<haxelib name="gameconsole" />
+	
+	
+	<assets path="Assets" rename="assets" exclude="openfl.svg" />   
+	<icon path="Assets/openfl.svg" />
+	
+</project>
